@@ -34,13 +34,32 @@
         let price = document.getElementById('price').value;
         let table = document.getElementById("table");
         let r = table.insertRow();
-        r.innerHTML=`<td>${name}</td>
-        <td>${qty}</td>
-        <td>${price}</td>
-        <td><button onclick = 'this.parentElement.parentElement.remove()' class="btn btn-danger">Remove</button>`;
+        r.innerHTML=`<td class = 'names'>${name}</td>
+        <td class = 'qtys'>${qty}</td>
+        <td class = 'prices'>${price}</td>
+        <td class = 'cost'><button onclick = 'this.parentElement.parentElement.remove()' class="btn btn-danger">Remove</button>`;
         document.getElementById('name').value='';
         document.getElementById('qty').value='';
         document.getElementById('price').value = '';
+    }
+    function edit(){
+        let names = document.getElementsByClassName('names');
+        let qtys = document.getElementsByClassName('qtys');
+        let prices = document.getElementsByClassName('prices');
+        let cost = document.getElementsByClassName('cost');
+        let name = document.getElementById('name').value;
+        let qty = document.getElementById('qty').value;
+        let price = document.getElementById('price').value;
+        for(let i=0;i<names.length;i++){
+            if(names[i].innerHTML ==  name){
+                qtys[i].innerHTML = qty;
+                prices[i].innerHTML = prices;
+                cost[i].innerHTML = qty*prices;
+                alert("Edited")
+                return;
+            }
+        }
+        alert("Item not found!")
     }
   </script>
 </body>
